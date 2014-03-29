@@ -48,7 +48,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
-     */
+     yaya*/
     private UserLoginTask mAuthTask = null;
 
     // UI references.
