@@ -10,6 +10,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build.VERSION;
@@ -48,7 +49,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
-     yaya*/
+     */
     private UserLoginTask mAuthTask = null;
 
     // UI references.
@@ -59,6 +60,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
 
     private TextView tv;
     private TextView tv2;
+
+    // Set fonts for UI references
+    public static Typeface tf;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +71,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
 
         tv = (TextView)findViewById(R.id.textView);
         tv2 = (TextView)findViewById(R.id.textView2);
+//        tf = Typeface.createFromAsset(getAssets(), "fonts/Georgia-Bold.TTF");
+
+//        tv.setTypeface(tf);
         //derp
         final Animation in = new AlphaAnimation(0.0f, 1.0f);
         in.setDuration(3000);
@@ -232,7 +240,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
                 // Select only email addresses.
                 ContactsContract.Contacts.Data.MIMETYPE +
                         " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                                                                     .CONTENT_ITEM_TYPE},
+                .CONTENT_ITEM_TYPE},
 
                 // Show primary email addresses first. Note that there won't be
                 // a primary email address if the user hasn't specified one.
@@ -291,10 +299,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
             return emailAddressCollection;
         }
 
-	    @Override
-	    protected void onPostExecute(List<String> emailAddressCollection) {
-	       addEmailsToAutoComplete(emailAddressCollection);
-	    }
+        @Override
+        protected void onPostExecute(List<String> emailAddressCollection) {
+            addEmailsToAutoComplete(emailAddressCollection);
+        }
     }
 
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
