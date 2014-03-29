@@ -34,7 +34,6 @@ import android.content.Context;
 
 
 public class OrgActivity extends Activity  {
-    String tmp = "a";
     ArrayList<String> listItems=new ArrayList<String>();
     ArrayAdapter<String> adapter;
     Context ctx = null;
@@ -52,7 +51,7 @@ public class OrgActivity extends Activity  {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Toast.makeText(getApplicationContext(),
-                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
+                        "Org Name = " + listItems.get(position), Toast.LENGTH_SHORT)
                         .show();
             }
         });
@@ -66,9 +65,6 @@ public class OrgActivity extends Activity  {
         add_org_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //tmp+=tmp;
-                //listItems.add(tmp);
-                //adapter.notifyDataSetChanged();
                 AlertDialog.Builder alert = new AlertDialog.Builder(ctx);
 
                 alert.setTitle("Join Organization");
